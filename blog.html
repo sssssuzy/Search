@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1"/>
+        <title>블로그 검색</title>
+        <link rel="stylesheet" href="https://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+        <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="https://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+        <style>
+            @font-face{font-family: Namsan; src:url("08SeoulNamsanB_0.ttf")}
+            *{font-family: Namsan;}
+            #list img{ width:50px; height:70; margin: 5px;}
+            #list {margin: 10px;}
+            #contentStyle{border: 3px dotted rgb(192, 188, 188); padding: 10px; text-align: center;}
+            #contentStyle #contents{text-align: left;}
+            #contentStyle img{border: 2px solid rgb(129, 123, 123);;}
+        </style>
+    </head>
+    <body>
+        <div data-role="page" id="main">
+            <div data-role="header" data-theme="a" data-position="fixed">
+                <a href="index.html" data-icon="home" data-iconpos="notext" target="_self">Home</a>
+                <h1>블로그검색</h1>
+            </div>
+            <!--블로그 목록 페이지-->
+            <div data-role="content">
+              <input type="text" id="txtQuery" value=""/>
+              <ul data-role="listview" id="list"></ul>
+                <script id="temp" type="text/x-handlebars-template">
+                {{#each documents}}
+                    <li>
+                        <a href="{{url}}"><img src="{{thumbnail}}"/>{{{title}}}</a>
+                    </li>
+                {{/each}}
+                </script>
+                <input type="button" value="More" id="btnMore">
+            </div>
+            <div data-role="footer" data-theme="a" data-position="fixed">
+                <h3>인천일보 아카데미 김수지</h3>
+            </div>
+        </div>       
+    </body>
+    <script>
+        var url ="https://dapi.kakao.com/v2/search/blog";
+        var size = 10;  
+        $("#txtQuery").on("keydown", function(){            
+        size = 10;
+        getList();
+        });
+    </script>
+    <script src="script.js"></script>
+</html>

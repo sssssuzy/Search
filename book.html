@@ -23,7 +23,7 @@
                 <h1>도서검색</h1>
             </div>
             <div data-role="content">
-              <input type="text" id="txtQuery" value="jquery"/>
+              <input type="text" id="txtQuery" value=""/>
               <ul data-role="listview" id="list"></ul>
                 <script id="temp" type="text/x-handlebars-template">
                 {{#each documents}}
@@ -63,40 +63,8 @@
         </div>
     </body>
     <script>
-        var size = 5;
-        getList();
-        $("#list").on("click","a", function(){
-            var title=$(this).attr("title");
-            var authors=$(this).attr("authors"); 
-            var contents=$(this).attr("contents");
-            var price=$(this).attr("price");   
-            var image=$(this).find("img").attr("src");                   
-            $("#image").attr("src", image);
-            $("#title").html(title);
-            $("#authors").html(authors + "(" + price + "원)");
-            $("#contents").html(contents);
-        });
-        $("#btnMore").on("click", function(){
-            size += 5;
-            getList();
-        });
-        $("#txtQuery").on("keydown", function(){            
-            size = 5;
-            getList();
-        })
-        function getList(){
-            var query=$("#txtQuery").val();
-            $.ajax({
-                type:"get",
-                url:"https://dapi.kakao.com/v3/search/book?target=title",
-                dataType:"json",
-                data:{"query":query, "size":size},
-                headers:{"Authorization": "KakaoAK d3ddfc03751730ccdffaedd440d93708"},
-                success:function(data){
-                    var temp=Handlebars.compile($("#temp").html());
-                    $("#list").html(temp(data)).listview("refresh");
-                }
-            });
-        }
+        var url ="https://dapi.kakao.com/v3/search/book?target=title"; 
+        var size = 10;       
     </script>
+    <script src="script.js"></script>
 </html>
