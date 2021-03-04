@@ -8,8 +8,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
         <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=d3ddfc03751730ccdffaedd440d93708"></script>
       <style>
-            @font-face{font-family: Namsan; src:url("08SeoulNamsanB_0.ttf")}
-            *{font-family: Namsan;}
+              @font-face{font-family: HGG; src:url("HGGGOTHICSSI\ 80G.TTF")}
+            *{font-family: HGG;}
             #list img{ width:50px; height:70; margin: 5px;}
             #list {margin: 10px;}
             #contentStyle{border: 3px dotted rgb(192, 188, 188); padding: 10px; text-align: center;}
@@ -76,14 +76,15 @@
             var container = document.getElementById('map');
 		    var options = {
 			center: new kakao.maps.LatLng(y, x),
-			level: 3
+			level: 2
 	    	};
-		    var map = new kakao.maps.Map(container, options);
+		    var map = new kakao.maps.Map(container, options);            
             var markerPosition  = new kakao.maps.LatLng(y, x); 
             var marker = new kakao.maps.Marker({
             position: markerPosition
-            });
-            marker.setMap(map);    
+            });            
+            marker.setMap(map); 
+            map.relayout();
             $("#address").html(address);
             $("#phone").html(phone);       
         });
