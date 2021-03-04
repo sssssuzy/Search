@@ -1,37 +1,35 @@
 <html>
     <head>
         <meta name="viewport" content="initial-scale=1, maximum-scale=1"/>
-        <title>이미지 검색</title>
+        <title>동영상 검색</title>
         <link rel="stylesheet" href="https://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
         <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="https://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
         <style>
-              @font-face{font-family: HGG; src:url("HGGGOTHICSSI\ 80G.TTF")}
+            @font-face{font-family: HGG; src:url("HGGGOTHICSSI\ 80G.TTF")}
             *{font-family: HGG;}
             #list img{ width:50px; height:70; margin: 5px;}
             #list {margin: 10px;}
             #contentStyle{border: 3px solid rgb(192, 188, 188); padding: 10px; text-align: center; border-radius: 10px 10px 10px;}
             #contentStyle #contents{text-align: left;}
             #contentStyle img{border: 2px solid rgb(129, 123, 123);;}
-            #list{overflow:hidden;}
-            #imageView img{width:150px; height:250px; float: left;}
         </style>
     </head>
     <body>
         <div data-role="page" id="main">
             <div data-role="header" data-theme="a" data-position="fixed">
                 <a href="index.html" data-icon="home" data-iconpos="notext" target="_self">Home</a>
-                <h1>이미지검색</h1>
+                <h1>동영상검색</h1>
             </div>
             <div data-role="content"  >
-              <input type="text" id="txtQuery" value="설현"/>
-              <div id="list" ></div>
+              <input type="text" id="txtQuery" value="AOA"/>
+              <ul id="list" data-role="listview" ></ul>
                 <script id="temp" type="text/x-handlebars-template">
                 {{#each documents}}
-                    <div id="imageView">
-                        <a href="{{image_url}}" ><img src="{{thumbnail_url}}"/></a>
-                    </div>
+                    <li id="imageView">
+                        <a href="{{url}}" ><img src="{{thumbnail}}"/>{{{title}}}</a>
+                    </li>
                 {{/each}}
                 </script>
                 <input type="button" value="More" id="btnMore">
@@ -39,7 +37,7 @@
              
     </body>
     <script>
-        var url ="https://dapi.kakao.com/v2/search/image"; 
+        var url ="https://dapi.kakao.com/v2/search/vclip?query=AOA"; 
         var size = 8;    
         $("#txtQuery").on("keydown", function(){            
         size = 8;
