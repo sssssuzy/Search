@@ -14,7 +14,7 @@
             #contentStyle{border: 3px solid rgb(192, 188, 188); padding: 10px; text-align: center; border-radius: 10px 10px 10px;}
             #contentStyle #contents{text-align: left;}
             #contentStyle img{border: 2px solid rgb(129, 123, 123);;}
-            #list{overflow:hidden; text-align: center;}
+            #list{overflow:hidden; }
             #imageView img{float:left;}
         </style>
     </head>
@@ -25,7 +25,7 @@
                 <h1>이미지검색</h1>
             </div>
             <div data-role="content"  >
-              <input type="text" id="txtQuery" value="설현"/>
+              <input type="text" id="txtQuery" value=""/>
               <div id="list" ></div>
                 <script id="temp" type="text/x-handlebars-template">
                 {{#each documents}}
@@ -40,13 +40,13 @@
     </body>
     <script>
         var url ="https://dapi.kakao.com/v2/search/image"; 
-        var size = 20;    
+        var size = 40;    
         $("#txtQuery").on("keydown", function(){            
-        size = 20;
+        size = 40;
         getList();
         });    
         $("#btnMore").on("click", function(){
-        size += 10;
+        size += 20;
         getList();
         }); 
     </script>
