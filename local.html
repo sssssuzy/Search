@@ -50,7 +50,7 @@
                 <h1>지역검색</h1>
             </div>            
             <div data-role="content" id="contentMap">
-                <div id="map" style="width:500px;height:400px; border-radius: 10px 10px 10px; border: 2px solid gray;"></div>
+                <div id="map" style="width:300px;height:400px; border-radius: 10px 10px 10px; border: 2px solid gray;"></div>
                <br>
                 <div id="address"></div>
                 <div id="phone"></div>   
@@ -68,9 +68,7 @@
         size = 10;
         getList();
         });
-        $("#list").on("click", "a", function(){
-            $("#address").html(address);
-            $("#phone").html(phone);
+        $("#list").on("click", "a", function(){           
             var x=$(this).attr("x");
             var y=$(this).attr("y");
             var address=$(this).attr("address");
@@ -85,7 +83,9 @@
             var marker = new kakao.maps.Marker({
             position: markerPosition
             });
-            marker.setMap(map);           
+            marker.setMap(map);    
+            $("#address").html(address);
+            $("#phone").html(phone);       
         });
     </script>
     <script src="script.js"></script>
